@@ -1,0 +1,8 @@
+@mixin mobile() {@media (max-width: 480px) {@content;}}
+@mixin notMobile() {@media (min-width: 481px) {@content;}}
+@mixin desktop() {@media (max-width: 769px) {@content;}}
+@mixin desktopLarge() {@media (max-width: 1025px) {@content;}}
+
+
+$background-comig-soon-gradient: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+$text-color: black;

@@ -1,10 +1,14 @@
-import './App.css'
+import ComingSoon from './views/ComingSoon/ComingSoon'
+import './constants.scss'
 
 function App() {
+  //routing will be initialized here, for now we just show ComingSoon view
   return (
-    <>
-      <div>Hello World!</div>
-    </>
+    <div className='wrapper'>
+      <div className='layout'>
+        <ComingSoon />
+      </div>
+    </div>
   )
 }
 
