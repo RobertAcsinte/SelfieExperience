@@ -1,14 +1,12 @@
 @use './../../constants';
 
 .container {
+  margin: 100px 0;
   display: flex;
   width: 100%;
-  height: auto;
-  min-height: 100%;
-  font-size: 5rem;
-  font-weight: 300;
+  font-size: 2rem;
+  font-weight: 800;
   justify-content: center;
-  align-items: center;
   word-wrap:break-word;
   overflow-wrap: anywhere; //without this, word-wrap does not work with display flex for some reason
 }
