@@ -1,113 +1,39 @@
 import styles from './ComingSoon.module.scss'
 import { ImageGallery } from "react-image-grid-gallery";
+import {useEffect, useState} from "react";
+
 
 const ComingSoon = () => {
-  const imagesArray = [
-    {
-      alt: "Image1's alt text",
-      caption: "Image1's description",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XLPw4DzyVfauDtG11E7mkNogPzwKn37-Xw&usqp=CAU",
-    },
-    {
-      alt: "Image2's alt text",
-      caption: "Image2's description",
-      src: "https://www.autozine.nl/cache/nieuws/728/6446_1.jpg",
-    },
-    {
-      alt: "Image3's alt text",
-      caption: "Image3's description",
-      src: "https://carsbase.com/photo/mazda/mazda-6-mps-mk34-pic33063.jpg",
-    },
-    {
-      alt: "Image1's alt text",
-      caption: "Image1's description",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XLPw4DzyVfauDtG11E7mkNogPzwKn37-Xw&usqp=CAU",
-    },
-    {
-      alt: "Image2's alt text",
-      caption: "Image2's description",
-      src: "https://www.autozine.nl/cache/nieuws/728/6446_1.jpg",
-    },
-    {
-      alt: "Image3's alt text",
-      caption: "Image3's description",
-      src: "https://carsbase.com/photo/mazda/mazda-6-mps-mk34-pic33063.jpg",
-    },
-    {
-      alt: "Image1's alt text",
-      caption: "Image1's description",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XLPw4DzyVfauDtG11E7mkNogPzwKn37-Xw&usqp=CAU",
-    },
-    {
-      alt: "Image2's alt text",
-      caption: "Image2's description",
-      src: "https://www.autozine.nl/cache/nieuws/728/6446_1.jpg",
-    },
-    {
-      alt: "Image3's alt text",
-      caption: "Image3's description",
-      src: "https://carsbase.com/photo/mazda/mazda-6-mps-mk34-pic33063.jpg",
-    },
-    {
-      alt: "Image1's alt text",
-      caption: "Image1's description",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XLPw4DzyVfauDtG11E7mkNogPzwKn37-Xw&usqp=CAU",
-    },
-    {
-      alt: "Image2's alt text",
-      caption: "Image2's description",
-      src: "https://www.autozine.nl/cache/nieuws/728/6446_1.jpg",
-    },
-    {
-      alt: "Image3's alt text",
-      caption: "Image3's description",
-      src: "https://carsbase.com/photo/mazda/mazda-6-mps-mk34-pic33063.jpg",
-    },
-    {
-      alt: "Image1's alt text",
-      caption: "Image1's description",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XLPw4DzyVfauDtG11E7mkNogPzwKn37-Xw&usqp=CAU",
-    },
-    {
-      alt: "Image2's alt text",
-      caption: "Image2's description",
-      src: "https://www.autozine.nl/cache/nieuws/728/6446_1.jpg",
-    },
-    {
-      alt: "Image3's alt text",
-      caption: "Image3's description",
-      src: "https://carsbase.com/photo/mazda/mazda-6-mps-mk34-pic33063.jpg",
-    },
-    {
-      alt: "Image1's alt text",
-      caption: "Image1's description",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XLPw4DzyVfauDtG11E7mkNogPzwKn37-Xw&usqp=CAU",
-    },
-    {
-      alt: "Image2's alt text",
-      caption: "Image2's description",
-      src: "https://www.autozine.nl/cache/nieuws/728/6446_1.jpg",
-    },
-    {
-      alt: "Image3's alt text",
-      caption: "Image3's description",
-      src: "https://carsbase.com/photo/mazda/mazda-6-mps-mk34-pic33063.jpg",
-    },
-  ];
+  const [imagesArray, setImagesArray] = useState([])
+
+  useEffect( () => {
+    const loadImages = new Promise((resolve, reject) => {
+        const imageModules = import.meta.glob("../../assets/img/presentation/*");
+        const keys = Object.keys(imageModules);
+        Promise.all(keys.map(key => imageModules[key]())).then(images => {
+            resolve(images);
+        }).catch(error => {
+            reject(error)
+        })
+    })
+      loadImages.then((images) => {
+        setImagesArray(images.map((image) => (
+          {src: image.default}
+        )));
+      })
+  }, [])
 
   return (
-    <>
-     {/*<div className={styles.container}>*/}
-      <div className={styles.container}>
-        Placeholder text for now, some random shit
-      </div>
-      <ImageGallery
-        imagesInfoArray={imagesArray}
-        columnWidth={230}
-        gapSize={10}
-      />
-     {/*</div>*/}
-    </>
+      <>
+        <div className={styles.container}>
+          Placeholder text for now, some random shit
+        </div>
+        <ImageGallery
+            imagesInfoArray={imagesArray}
+            columnWidth={230}
+            gapSize={10}
+        />
+      </>
   )
 }
 
