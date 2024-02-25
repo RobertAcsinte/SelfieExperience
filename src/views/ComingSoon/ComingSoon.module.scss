@@ -1,15 +1,79 @@
 @use './../../constants';
 
 .container {
-  margin: 100px 0;
+  color: constants.$background;
+  margin: 50px 0;
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-size: 2rem;
+  font-size: 5vw;
   font-weight: 800;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   text-align: center;
   word-wrap:break-word;
   overflow-wrap: anywhere; //without this, word-wrap does not work with display flex for some reason
+
+  @include constants.desktopLarge() {
+    font-size: 2rem;
+  }
+
+  .containerContact {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    width: 100%;
+    justify-content: space-between;
+
+    @include constants.desktopLarge() {
+      flex-direction: row;
+    }
+  }
+
+  .contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    color: constants.$text-color;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 50px;
+    box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    padding: 20px;
+
+    @include constants.desktopLarge() {
+      width: 350px;
+    }
+  }
+
+  .phone {
+    background: constants.$red;
+  }
+
+  .address {
+    background: constants.$yellow;
+  }
+
+  .logo {
+    width: 500px;
+    max-width: 100%;
+  }
+
+  .text {
+    background: constants.$green;
+    color: constants.$text-color;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 50px;
+    box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+  }
 }
+
+
+
+

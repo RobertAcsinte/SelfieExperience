@@ -1,8 +1,12 @@
 @mixin mobile() {@media (max-width: 480px) {@content;}}
 @mixin notMobile() {@media (min-width: 481px) {@content;}}
 @mixin desktop() {@media (max-width: 769px) {@content;}}
-@mixin desktopLarge() {@media (max-width: 1025px) {@content;}}
+@mixin desktopLarge() {@media (min-width: 770px) {@content;}}
 
 
-$background-comig-soon-gradient: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+$background: #41a4ff;
+$green: #3afeabd6;
+$yellow: #FEFC13;
+$red: #E73232;
 $text-color: black;
+

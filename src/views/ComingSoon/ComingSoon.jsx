@@ -2,12 +2,15 @@ import styles from './ComingSoon.module.scss'
 import { ImageGallery } from "react-image-grid-gallery";
 import {useEffect, useState} from "react";
 import {PropagateLoader} from "react-spinners";
+import Logo from '../../assets/img/logo/selfieExperienceLogoVectorized.svg'
+
 
 
 const ComingSoon = () => {
   const [imagesArray, setImagesArray] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
 
   useEffect(() => {
           const loadImages = new Promise((resolve, reject) => {
@@ -34,14 +37,28 @@ const ComingSoon = () => {
   return (
       <>
           <div className={styles.container}>
-              <p>Placeholder text for now, some random shit</p>
+              <div className={styles.containerContact}>
+                  <p className={`${styles.contact} ${styles.phone}`}>Telefon: 0761 547 589</p>
+                  <p className={`${styles.contact} ${styles.address}`}>Adresa: Bd-ul Hristo Botev 11, București</p>
+              </div>
+              <img src={Logo} className={styles.logo} alt="Selfie Experience Logo"/>
+              <p className={styles.text}>
+                  In timp ce noi lucram la site, fa-ne o vizita, suntem deschisi :)
+              </p>
 
               <PropagateLoader
-                  color="#d63636"
+                  size={30}
+                  color='#FEFC13'
                   loading={loading}
-                  cssOverride={{"display": "inline-block"}}
+                  cssOverride={
+                      {
+                          "display": "inline-block",
+                          "margin": "50px 0",
+                          "width": "500px",
+                      }
+                  }
               />
-              {error && <div>error</div>}
+              {error && <p className={styles.text}>error</p>}
           </div>
           <ImageGallery
               imagesInfoArray={imagesArray}
