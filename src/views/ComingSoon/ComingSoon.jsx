@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './ComingSoon.module.scss';
 import { PropagateLoader } from 'react-spinners';
 import Logo from '../../assets/img/logo/selfieExperienceLogoVectorized.svg';
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa";
 
 const ComingSoon = () => {
   const [imagesArray, setImagesArray] = useState([]);
@@ -33,13 +35,15 @@ const ComingSoon = () => {
     setSelectedImage(imageSrc);
     setIsOpen(true);
   };
-
+  const showInMapClicked = () => {
+    window.open("https://www.google.com/maps/dir/44.4345526,26.1072296/selfie+experience/" );//+44.43466457502269+","+26.107332786643582
+  };
   return (
     <>
       <div className={styles.container}>
               <div className={styles.containerContact}>
-                  <p className={`${styles.contact} ${styles.phone}`}>Telefon: 0761 547 589</p>
-                  <p className={`${styles.contact} ${styles.address}`}>Adresa: Bd-ul Hristo Botev 11, București</p>
+                  <a href="tel:0761547589" className={`${styles.contact} ${styles.phone}`}>Telefon: 0761 547 589</a>
+                  <p className={`${styles.contact} ${styles.address}`} onClick={showInMapClicked}>Adresa: Bd-ul Hristo Botev 11, București</p>
               </div>
               <img src={Logo} className={styles.logo} alt="Selfie Experience Logo"/>
               <p className={styles.text}>

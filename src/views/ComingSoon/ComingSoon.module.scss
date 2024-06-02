@@ -53,10 +53,12 @@
 
   .phone {
     background: constants.$red;
+    text-decoration: none ;
   }
 
   .address {
     background: constants.$yellow;
+    cursor: pointer;
   }
 
   .logo {
