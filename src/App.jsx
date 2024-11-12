@@ -1,5 +1,6 @@
 import ComingSoon from './views/ComingSoon/ComingSoon'
 import './constants.scss'
+import CuratorFeed from './views/Instagram'
 
 function App() {
   //routing will be initialized here, for now we just show ComingSoon view

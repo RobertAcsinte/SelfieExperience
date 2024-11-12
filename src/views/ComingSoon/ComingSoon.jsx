@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './ComingSoon.module.scss';
 import { PropagateLoader } from 'react-spinners';
 import Logo from '../../assets/img/logo/selfieExperienceLogoVectorized.svg';
-import { FaLocationDot } from "react-icons/fa6";
-import { FaPhone } from "react-icons/fa";
+import CuratorFeed from '../Instagram';
 
 const ComingSoon = () => {
   const [imagesArray, setImagesArray] = useState([]);
@@ -36,23 +35,24 @@ const ComingSoon = () => {
     setIsOpen(true);
   };
   const showInMapClicked = () => {
-    window.open("https://www.google.com/maps/dir/44.4345526,26.1072296/selfie+experience/" );//+44.43466457502269+","+26.107332786643582
+    window.open("https://www.google.com/maps/dir/current+location/selfie+experience/");//+44.43466457502269+","+26.107332786643582
   };
   return (
     <>
       <div className={styles.container}>
-              <div className={styles.containerContact}>
-                  <a href="tel:0761547589" className={`${styles.contact} ${styles.phone}`}>Telefon: 0761 547 589</a>
-                  <p className={`${styles.contact} ${styles.address}`} onClick={showInMapClicked}>Adresa: Bd-ul Hristo Botev 11, București</p>
-              </div>
-              <img src={Logo} className={styles.logo} alt="Selfie Experience Logo"/>
-              <p className={styles.text}>
-                  {"In timp ce noi lucram la site, fa-ne o vizita, suntem deschisi :)"}
-              </p>
+        <div className={styles.containerContact}>
+          <a href="tel:0761547589" className={`${styles.contact} ${styles.phone}`}>Telefon: 0761 547 589</a>
+          <p className={`${styles.contact} ${styles.address}`} onClick={showInMapClicked}>Adresa: St. Apeductului 51, Militari Residence</p>
+        </div>
+        <img src={Logo} className={styles.logo} alt="Selfie Experience Logo" />
+        <p className={styles.text}>
+          {"In timp ce noi lucram la site, fa-ne o vizita, suntem deschisi :)"}
+        </p>
       </div>
+      {!loading && <CuratorFeed />}
       {loading && <div className={styles.loaderWrapper}>
-    <PropagateLoader size={30} color="#FEFC13" />
-  </div>}
+        <PropagateLoader size={30} color="#FEFC13" />
+      </div>}
       {error && <p>Error loading images.</p>}
       {!loading && !error && (
         <div className={styles.galleryGrid}>
